@@ -3,8 +3,8 @@ title: IPFS and Pinata
 sidebar_position: 5
 ---
 
-import Tabs from ‘@theme/Tabs’;
-import TabItem from ‘@theme/TabItem’;
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## What is Pinata?
 
@@ -21,11 +21,11 @@ There are two main ways you can upload files to IPFS with Pinata: the Pinata web
 
 To get started you will want to visit the Pinata website and  [sign up for a free account](https://www.pinata.cloud/pricing?utm_source=dev-docs&utm_medium=dev-docs&utm_campaign=&utm_content=shardeum), which will give you up to 1GB storage and 100 files!
 
-After you have signed up you can start uploading! Simply press the “Upload” button and select “file”: 
+After you have signed up you can start uploading! Simply press the "Upload" button and select "file": 
 
 <img src="https://gateway.pinata.cloud/ipfs/QmNWiQyceu4eTQ9NJK7QEGtuYwPZw6UNcuR32x78UoqvpM/1.png" alt="step 1" />
 
-Once you have selected the file on your computer, you can give it a name and click “Upload”: 
+Once you have selected the file on your computer, you can give it a name and click "Upload": 
 
 <img src="https://gateway.pinata.cloud/ipfs/QmNWiQyceu4eTQ9NJK7QEGtuYwPZw6UNcuR32x78UoqvpM/3.png" alt="step 2" />
 
@@ -45,19 +45,19 @@ If you are building a platform or application and prefer to upload through an AP
 Here is a quick node.js code snippet showing how you would do a simple file upload to Pinata: 
 
 ```
-var axios = require(‘axios’);
-var FormData = require(‘form-data’);
-var fs = require(‘fs’);
+var axios = require('axios');
+var FormData = require('form-data');
+var fs = require('fs');
 var data = new FormData();
-data.append(‘file’, fs.createReadStream(‘/Users/Desktop/images/cat.JPG’));
-data.append(‘pinataOptions’, ‘{“cidVersion”: 1}’);
-data.append(‘pinataMetadata’, ‘{“name”: “MyFile”, “keyvalues”: {“company”: “Pinata”}}’);
+data.append('file', fs.createReadStream('/Users/Desktop/images/cat.JPG'));
+data.append('pinataOptions', '{"cidVersion": 1}');
+data.append('pinataMetadata', '{"name": "MyFile", "keyvalues": {"company": "Pinata"}}');
 
 var config = {
-  method: ‘post’,
-  url: ‘https://api.pinata.cloud/pinning/pinFileToIPFS’,
+  method: 'post',
+  url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
   headers: { 
-    ‘Authorization’: ‘Bearer PINATA JWT’, 
+    'Authorization': 'Bearer PINATA JWT', 
     …data.getHeaders()
   },
   data : data
